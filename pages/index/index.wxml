@@ -1,0 +1,30 @@
+<!--index.wxml-->
+<view class="container">
+
+  <view class="control">
+    <text>行数:</text>
+    <input class="input-box" type="number" value="{{rows}}" bindinput="bindRows" placeholder='最大行数不许超过20'></input>
+    <text>列数:</text>
+    <input class="input-box" type="number" value="{{cols}}" bindinput="bindCols" placeholder='最大列数不许超过7'></input>
+     <!-- <button bindtap="reset"> 重置 </button>  -->
+     <button bindtap="getArray"> 答案 </button> 
+  </view>
+
+  <block>
+  <div class="rows" wx:for="{{rows}}" wx:key="i" wx:for-item="row"> 
+    <div class="col" wx:for="{{cols}}" wx:key="j" wx:for-item="col" >
+    <div class="light  {{lights[row][col].class.left}} {{lights[row][col].class.top}} {{lights[row][col].class.needClick}}"  
+          data-x="{{row}}" 
+          data-y="{{col}}" 
+          data-status="{{lights[row][col].status}}" 
+          bindtap="tapFn">
+
+      <image class="light-img" wx:if="{{lights[row][col].status}}" src="imgs/lamp-on.png"></image>
+      <image class="light-img" wx:else src="imgs/lamp.png"></image>
+      
+    </div>
+    </div>
+  </div>
+  </block>
+
+</view>

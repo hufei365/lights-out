@@ -1,0 +1,35 @@
+/**index.wxss**/
+
+
+.input-box{
+  height: 64rpx;
+  border: 1rpx solid #dee6ee;
+  margin-bottom: 20rpx;
+}
+
+.light{
+		width: 64rpx;
+		height: 64rpx;
+    padding: 15rpx;
+		text-align: center;
+		display: inline-block;
+		border: 1px solid #555;
+		border-left: none;
+		border-top: none;
+}
+.top{
+  border-top: 1px solid #555;
+}
+
+.left{
+  border-left: 1px solid #555;
+}
+
+.need-click{
+  border-color: yellowgreen;
+}
+
+.light-img{
+  width: 64rpx;
+  height: 64rpx;
+}
