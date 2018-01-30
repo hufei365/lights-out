@@ -16,13 +16,14 @@ var LightsOut = function (n, m) {
     return arr;
   }
 
-  var aMap = Array.prototype.getTwo(maxn * maxn);
+  var aMap;
   var result = new Array(maxn * maxn);
-
-  var mp = Array.prototype.getTwo(maxn);
 
   this.resetAmap = function () {
     var N = this.N, M = this.M;
+
+    // 清空之前的数据
+    aMap = Array.prototype.getTwo(maxn * maxn);
 
     for (var i = 0; i < N; i++) {
       for (var j = 0; j < M; j++) {
@@ -38,7 +39,7 @@ var LightsOut = function (n, m) {
     // for(var i = 0; i < M*N; i++){
     //     var s = '';
     //     for(var j = 0; j < M * N; j++){
-    //         s = s + ' ' + a[i][j];
+    //         s = s + ' ' + aMap[i][j];
     //     }
     //     console.log(s);
     // }
@@ -46,6 +47,7 @@ var LightsOut = function (n, m) {
 
   this.Gauss = function (n, m) {
 
+    // 清空 之前的结果
     for (var z = 0; z < result.length; z++) {
       result[z] = 0;
     }
@@ -59,11 +61,11 @@ var LightsOut = function (n, m) {
       if (aMap[max_r][c] == 0) { r--; continue; }
       if (max_r != r) {
         for (var i = c; i < m + 1; i++) {
+          // swap
           var tmp = aMap[max_r][i];
           aMap[max_r][i] = aMap[r][i];
           aMap[r][i] = tmp;
         }
-        // swap
       }
 
       for (var i = r + 1; i < n; i++) {

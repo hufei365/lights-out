@@ -26,7 +26,8 @@
 }
 
 .need-click{
-  border-color: yellowgreen;
+  border-color: green;
+  background: yellowgreen;
 }
 
 .light-img{

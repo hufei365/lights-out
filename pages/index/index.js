@@ -7,7 +7,8 @@ var lightout;
 Page({
   data: {
     rows: 4,
-    cols: 4
+    cols: 4,
+    showAnswer: true
   },
   //事件处理函数
   onLoad: function () {
@@ -16,6 +17,9 @@ Page({
 
   bindRows: function(e){
     var rows = parseInt(e.detail.value);
+    if (!rows) {
+      return;
+    }
     if (rows > 20) {
       rows = 20;
     }
@@ -24,7 +28,10 @@ Page({
 
   bindCols: function(e){
     var cols = parseInt(e.detail.value);
-    if(cols > 7){
+    if(!cols){
+      return;
+    }
+    if( cols > 7 ){
       cols = 7;
     }
     this.reset(this.data.rows, cols);
@@ -76,7 +83,7 @@ Page({
     }
   },
 
-  getArray: function(){
+  showAnswer: function(){
     var page = this;
     var rows = this.data.rows,
         cols = this.data.cols,
@@ -88,9 +95,9 @@ Page({
         stdin = (stdin + (lights[i][j].status ? '1' : '0'));
       }
     }
-    console.log(stdin);
+    
     var results = lightout.getResult(stdin);
-    lightout.printf();
+    
       for(var i = 0 ; i < rows; i++){
         for(var j = 0; j< cols; j++){
           page.setData({
@@ -98,5 +105,27 @@ Page({
           });
         }
       }
+
+    page.setData({
+      showAnswer: false
+    });
+  },
+
+  clearAnswer: function(){
+    var page = this;
+    var rows = this.data.rows,
+      cols = this.data.cols;
+    page.setData({
+      showAnswer: true
+    });
+    for (var i = 0; i < rows; i++) {
+      for (var j = 0; j < cols; j++) {
+        page.setData({
+          ['lights[' + i + '][' + j + '].class.needClick']: ''
+        });
+      }
+    }
   }
+
+
 })

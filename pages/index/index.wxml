@@ -7,7 +7,7 @@
     <text>列数:</text>
     <input class="input-box" type="number" value="{{cols}}" bindinput="bindCols" placeholder='最大列数不许超过7'></input>
      <!-- <button bindtap="reset"> 重置 </button>  -->
-     <button bindtap="getArray"> 答案 </button> 
+     
   </view>
 
   <block>
@@ -25,6 +25,11 @@
     </div>
     </div>
   </div>
+  <view>
+
+  <button wx:if="{{showAnswer}}" bindtap="showAnswer"> 查看答案 </button> 
+  <button wx:else="" bindtap="clearAnswer"> 清空答案 </button> 
+  </view>
   </block>
 
 </view>
